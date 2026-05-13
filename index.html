@@ -3,449 +3,373 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobacc PIM Command Center</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>PIM Console</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="shell">
-      <header class="topbar">
-        <div class="brand-lockup">
-          <div class="brand-mark"></div>
-          <div>
-            <p class="eyebrow">Mobacc Systems</p>
-            <h1>Mobacc PIM Command Center</h1>
+  <body data-admin-theme="110">
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-area">
+          <div class="brand-chip" id="brand-chip">110</div>
+          <div class="brand-copy">
+            <h1>PIM Console</h1>
+            <p id="brand-subtitle">Mobacc productinformatie en documentbeheer</p>
           </div>
         </div>
-        <div class="topbar-actions">
-          <label class="search-field">
-            <span class="sr-only">Zoek artikelen</span>
-            <input
-              id="global-search"
-              type="search"
-              placeholder="Zoek op administratie, artikelnummer, leverancier of document"
-            />
-          </label>
-          <button class="ghost-button" type="button">Reminders 12</button>
+
+        <div class="header-controls">
+          <div class="header-field">
+            <label for="admin-select">Administratie</label>
+            <select id="admin-select">
+              <option value="110">110 - Mobacc</option>
+              <option value="210">210 - Pharmaspray</option>
+              <option value="710">710 - MediccSports</option>
+              <option value="731">731 - Sportbase</option>
+            </select>
+          </div>
+
+          <div class="header-field context-indicator">
+            <label>Context</label>
+            <div class="context-pill" id="context-pill">Selecteer een artikel</div>
+          </div>
         </div>
       </header>
 
-      <nav class="tabs" aria-label="Hoofdnavigatie">
-        <button class="tab-button active" data-view="dashboard">Dashboard</button>
-        <button class="tab-button" data-view="detail">Stamkaart</button>
-        <button class="tab-button" data-view="documents">Documenten</button>
-        <button class="tab-button" data-view="completeness">Datacompleetheid</button>
-      </nav>
-
-      <main>
-        <section class="view active" id="dashboard-view">
-          <section class="hero">
-            <div class="hero-accent"></div>
-            <div class="hero-copy">
-              <p class="eyebrow">Exact Globe uitbreiding per administratie + artikelnummer</p>
-              <h2>Productdata, compliance en webshopverrijking in één centrale stamkaart.</h2>
-              <p class="hero-text">
-                Demo-opzet voor Mobacc, Pharmaspray, Sportbase en Mediccsports met versiebeheer,
-                leverancierscontext, klantspecifieke documenten en compleetheidscontrole.
-              </p>
-            </div>
-            <aside class="hero-panel">
-              <p class="panel-label">Vandaag</p>
-              <ul class="hero-metrics">
-                <li><strong>1.248</strong><span>artikelen in demo</span></li>
-                <li><strong>63</strong><span>bijna verlopen documenten</span></li>
-                <li><strong>27</strong><span>items wachten op QA/QC</span></li>
-              </ul>
-            </aside>
-          </section>
-
-          <section class="kpi-grid">
-            <article class="kpi-card">
-              <span class="kpi-label">Administraties</span>
-              <strong>4 actief</strong>
-              <p>110 Mobacc, 210 Pharmaspray, 710 Mediccsports, 731 Sportbase</p>
-            </article>
-            <article class="kpi-card">
-              <span class="kpi-label">Webshopartikelen</span>
-              <strong>318 compleet</strong>
-              <p>Omschrijving, media, downloads en specificaties gevuld</p>
-            </article>
-            <article class="kpi-card warning">
-              <span class="kpi-label">MSDS opvolging</span>
-              <strong>14 reminders</strong>
-              <p>SDS-documenten verlopen binnen 30 dagen</p>
-            </article>
-            <article class="kpi-card muted">
-              <span class="kpi-label">Klant-specs</span>
-              <strong>42 open</strong>
-              <p>Specificaties nog niet gekoppeld aan klantniveau</p>
-            </article>
-          </section>
-
-          <section class="module-grid">
-            <article class="module-card emphasis">
-              <div class="module-meta">
-                <span>SYS-01</span>
-                <span class="status-pill danger">6 blokkades</span>
-              </div>
-              <h3>Artikelbeheer</h3>
-              <p>Centrale stamkaart per administratie en artikelnummer met vaste datablokken.</p>
-              <button class="link-button" data-target-view="detail">Open stamkaart</button>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-02</span>
-                <span class="status-pill warning">18 revisies</span>
-              </div>
-              <h3>Documenten & Versies</h3>
-              <p>SDS, specificaties, leveranciersdocumenten en webshopassets met geldigheid.</p>
-              <button class="link-button" data-target-view="documents">Bekijk register</button>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-03</span>
-                <span class="status-pill">9 taken</span>
-              </div>
-              <h3>Compliance</h3>
-              <p>MSDS, PPWR, vervaldatums en kwaliteitsdocumenten per artikelcontext.</p>
-              <button class="link-button" data-target-view="documents">Open compliance</button>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-04</span>
-                <span class="status-pill success">87%</span>
-              </div>
-              <h3>Webshopdata</h3>
-              <p>Teksten, media, downloads en kruisbestuiving tussen 710 en 731.</p>
-              <button class="link-button" data-target-view="detail">Bekijk content</button>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-05</span>
-                <span class="status-pill">11 open</span>
-              </div>
-              <h3>Inkoop & Leveranciers</h3>
-              <p>Meerdere leveranciers, MOQ, leveranciersfoto’s en bronspecificaties.</p>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-06</span>
-                <span class="status-pill warning">PPWR focus</span>
-              </div>
-              <h3>Verpakking & PPWR</h3>
-              <p>Gewichten per materiaal en verpakkingstype voor rapportage en compliance.</p>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-07</span>
-                <span class="status-pill">22 acties</span>
-              </div>
-              <h3>Klant-specificaties</h3>
-              <p>Documentsets en productspecificaties op klantniveau zonder dataduplicatie.</p>
-            </article>
-            <article class="module-card">
-              <div class="module-meta">
-                <span>SYS-08</span>
-                <span class="status-pill success">Live demo</span>
-              </div>
-              <h3>Datacompleetheid</h3>
-              <p>Procesmatrix voor inkoop, QA/QC, sales, webshop, compliance en R&D.</p>
-              <button class="link-button" data-target-view="completeness">Toon matrix</button>
-            </article>
-          </section>
-
-          <section class="two-column">
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Open opvolging</h3>
-                <span class="panel-label">Reminders</span>
-              </div>
-              <ul class="timeline">
-                <li>
-                  <strong>SDS Aerosol Degreaser</strong>
-                  <span>Administratie 110 · verloopt op 03-06-2026</span>
-                </li>
-                <li>
-                  <strong>Klant-spec ontbreekt</strong>
-                  <span>Artikel 710-PRT-2231 · klant Mediq Sports</span>
-                </li>
-                <li>
-                  <strong>MOQ nog niet bevestigd</strong>
-                  <span>Grondstof 210-RM-5510 · leverancier 2</span>
-                </li>
-              </ul>
-            </article>
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Kruislings zoeken</h3>
-                <span class="panel-label">Preview</span>
-              </div>
-              <div class="filter-tags">
-                <span>Administratie 110</span>
-                <span>Webshop gereed</span>
-                <span>SDS binnen 30 dagen</span>
-                <span>Leverancier 2</span>
-                <span>Klant-spec actief</span>
-                <span>PPWR onvolledig</span>
-              </div>
-            </article>
-          </section>
-        </section>
-
-        <section class="view" id="detail-view">
-          <section class="detail-header">
+      <main class="workspace">
+        <aside class="search-panel">
+          <div class="search-card sync-card">
             <div>
-              <p class="eyebrow">Centrale stamkaart</p>
-              <h2>110-MOB-42015 · Industrial Degreaser 500ml</h2>
-              <p class="hero-text">
-                Exact-brondata blijft leidend. PIM verrijkt met webshop, compliance,
-                leverancierscontext en documentversies.
-              </p>
+              <h2>Exact sync</h2>
+              <p id="sync-caption">Kies eerst een administratie. Daarna zoek je binnen de gesynchroniseerde artikeldata.</p>
             </div>
-            <div class="detail-badges">
-              <span class="status-pill">Webshopartikel</span>
-              <span class="status-pill">Verkoopartikel</span>
-              <span class="status-pill">Grondstofrelaties via Exact</span>
+            <span class="sync-badge">Gesynchroniseerd</span>
+          </div>
+
+          <div class="search-card">
+            <label class="search-label" for="article-search">Zoek artikel of omschrijving</label>
+            <input
+              id="article-search"
+              class="search-input"
+              type="search"
+              placeholder="Bijv. LIMONE, onderhoudsspray of 50-33915-4602"
+            />
+
+            <div class="search-meta">
+              <span id="result-count">0 resultaten</span>
+              <button id="clear-search" type="button" class="text-button">Reset</button>
             </div>
-          </section>
+          </div>
 
-          <section class="three-column">
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Basisdata</h3>
-                <span class="panel-label">Exact</span>
-              </div>
-              <dl class="data-list">
-                <div><dt>Administratie</dt><dd>110 Mobacc</dd></div>
-                <div><dt>Artikelnummer</dt><dd>MOB-42015</dd></div>
-                <div><dt>Artikeltype</dt><dd>Verkoopartikel / webshop</dd></div>
-                <div><dt>Artikelgroep</dt><dd>Technische aerosolen</dd></div>
-                <div><dt>Basisomschrijving</dt><dd>Industrial Degreaser 500ml</dd></div>
-                <div><dt>Eenheid</dt><dd>Bus / omdoos 12</dd></div>
-              </dl>
-            </article>
+          <div class="search-card">
+            <div class="list-heading">
+              <h3>Resultaten</h3>
+              <span id="result-scope">110 - Mobacc</span>
+            </div>
+            <div id="search-results" class="result-list" aria-live="polite"></div>
+          </div>
+        </aside>
 
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Webshop</h3>
-                <span class="panel-label">PIM</span>
+        <section class="detail-panel">
+          <div class="record-hero">
+            <div class="hero-primary">
+              <div class="field-row compact">
+                <label>Artikelcode</label>
+                <input id="field-code" type="text" readonly />
               </div>
-              <dl class="data-list">
-                <div><dt>Korte titel</dt><dd>Professionele ontvetter voor industrieel gebruik</dd></div>
-                <div><dt>USP’s</dt><dd>Snelle werking, residuarm, geschikt voor metaal</dd></div>
-                <div><dt>Media</dt><dd>4 foto’s, 1 video, 2 downloads</dd></div>
-                <div><dt>SEO status</dt><dd>Concept gereed</dd></div>
-              </dl>
-            </article>
+              <div class="field-row compact wide">
+                <label>Omschrijving</label>
+                <input id="field-description" type="text" readonly />
+              </div>
+              <div class="field-row compact">
+                <label>Zoekcode</label>
+                <input id="field-searchcode" type="text" readonly />
+              </div>
+            </div>
 
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Compliance</h3>
-                <span class="panel-label">Actief</span>
+            <div class="hero-secondary">
+              <div class="field-row compact">
+                <label>Administratie</label>
+                <input id="field-admin" type="text" readonly />
               </div>
-              <dl class="data-list">
-                <div><dt>SDS</dt><dd>Versie 5.2 · geldig tot 03-06-2026</dd></div>
-                <div><dt>UN-nummer</dt><dd>1950</dd></div>
-                <div><dt>Gevaarstatus</dt><dd>Ontvlambare aerosol</dd></div>
-                <div><dt>PPWR</dt><dd>Primair 0.028 kg blik / 0.004 kg kunststof</dd></div>
-              </dl>
-            </article>
-          </section>
+              <div class="field-row compact">
+                <label>Artikelprofiel</label>
+                <input id="field-profile" type="text" readonly />
+              </div>
+              <div class="field-row compact">
+                <label>Workflowstatus</label>
+                <input id="field-status" type="text" readonly />
+              </div>
+              <div class="field-row compact">
+                <label>Laatste update</label>
+                <input id="field-updated" type="text" readonly />
+              </div>
+            </div>
+          </div>
 
-          <section class="two-column">
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Leveranciers</h3>
-                <span class="panel-label">Meervoudig</span>
-              </div>
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Leverancier</th>
-                    <th>Rol</th>
-                    <th>MOQ</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>ChemSource BV</td>
-                    <td>Primair</td>
-                    <td>2.400 stuks</td>
-                    <td>Spec actueel</td>
-                  </tr>
-                  <tr>
-                    <td>Nordic Bulk GmbH</td>
-                    <td>Alternatief</td>
-                    <td>5.000 stuks</td>
-                    <td>SDS review nodig</td>
-                  </tr>
-                </tbody>
-              </table>
-            </article>
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Klant-specifieke context</h3>
-                <span class="panel-label">Actief</span>
-              </div>
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Klant</th>
-                    <th>Document</th>
-                    <th>Versie</th>
-                    <th>Geldigheid</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mediccsports</td>
-                    <td>Verkoopspecificatie</td>
-                    <td>v3.1</td>
-                    <td>31-12-2026</td>
-                  </tr>
-                  <tr>
-                    <td>Sportbase</td>
-                    <td>White-label datasheet</td>
-                    <td>v1.4</td>
-                    <td>Open review</td>
-                  </tr>
-                </tbody>
-              </table>
-            </article>
-          </section>
-        </section>
+          <div class="record-overview">
+            <div class="overview-card">
+              <span class="overview-label">Type</span>
+              <strong id="overview-type">-</strong>
+            </div>
+            <div class="overview-card">
+              <span class="overview-label">Kanaal</span>
+              <strong id="overview-channel">-</strong>
+            </div>
+            <div class="overview-card">
+              <span class="overview-label">Documenten</span>
+              <strong id="overview-docs">-</strong>
+            </div>
+            <div class="overview-card">
+              <span class="overview-label">Open punten</span>
+              <strong id="overview-open">-</strong>
+            </div>
+          </div>
 
-        <section class="view" id="documents-view">
-          <section class="detail-header">
-            <div>
-              <p class="eyebrow">Documentregister</p>
-              <h2>Versiebeheer per documenttype en context</h2>
+          <nav class="tab-bar" id="tab-bar" aria-label="PIM tabs"></nav>
+
+          <section class="tab-view active" id="tab-overview">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>PIM basis</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Artikeltype</label>
+                    <input id="basis-item-type" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Artikelgroep</label>
+                    <input id="basis-group" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Merk</label>
+                    <input id="basis-brand" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Attribuutset</label>
+                    <input id="basis-attribute-set" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Eenheid</label>
+                    <input id="basis-unit" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Data-eigenaar</label>
+                    <input id="basis-owner" type="text" readonly />
+                  </div>
+                </div>
+              </div>
+
+              <div class="group-box">
+                <h3>Statussignalen</h3>
+                <ul id="basis-flags" class="signal-list"></ul>
+              </div>
             </div>
           </section>
-          <section class="two-column">
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Compliance-documenten</h3>
-                <span class="panel-label">SDS / TDS / COA</span>
+
+          <section class="tab-view" id="tab-documents">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Documentregister</h3>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Context</th>
+                      <th>Versie</th>
+                      <th>Status</th>
+                      <th>Geldig t/m</th>
+                    </tr>
+                  </thead>
+                  <tbody id="documents-table"></tbody>
+                </table>
               </div>
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Versie</th>
-                    <th>Ingang</th>
-                    <th>Verloop</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>SDS</td>
-                    <td>5.2</td>
-                    <td>04-06-2025</td>
-                    <td>03-06-2026</td>
-                    <td><span class="status-pill warning">Reminder</span></td>
-                  </tr>
-                  <tr>
-                    <td>TDS</td>
-                    <td>2.8</td>
-                    <td>14-01-2026</td>
-                    <td>n.v.t.</td>
-                    <td><span class="status-pill success">Actueel</span></td>
-                  </tr>
-                  <tr>
-                    <td>COA sjabloon</td>
-                    <td>1.3</td>
-                    <td>11-02-2026</td>
-                    <td>n.v.t.</td>
-                    <td><span class="status-pill">Interne bron</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </article>
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Media & webshopassets</h3>
-                <span class="panel-label">Apart model</span>
+
+              <div class="group-box">
+                <h3>Upload & preview</h3>
+                <div class="upload-stack" id="upload-list"></div>
               </div>
+            </div>
+          </section>
+
+          <section class="tab-view" id="tab-content">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Magento / webshopteksten</h3>
+                <div class="form-grid">
+                  <div class="field-row wide">
+                    <label>Korte omschrijving</label>
+                    <textarea id="content-short" rows="3" readonly></textarea>
+                  </div>
+                  <div class="field-row wide">
+                    <label>Lange omschrijving</label>
+                    <textarea id="content-long" rows="6" readonly></textarea>
+                  </div>
+                  <div class="field-row">
+                    <label>SEO titel</label>
+                    <input id="content-seo-title" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>SEO status</label>
+                    <input id="content-seo-status" type="text" readonly />
+                  </div>
+                </div>
+              </div>
+
+              <div class="group-box">
+                <h3>Preview</h3>
+                <div class="preview-panel">
+                  <div class="preview-header">
+                    <span class="preview-kicker">Webshop preview</span>
+                    <strong id="preview-title"></strong>
+                  </div>
+                  <p id="preview-copy"></p>
+                  <ul id="usp-list" class="bullet-list"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="group-box full-width">
+              <h3>Media & downloads</h3>
               <table class="data-table">
                 <thead>
                   <tr>
                     <th>Asset</th>
                     <th>Gebruik</th>
-                    <th>Variant</th>
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Hero image</td>
-                    <td>Webshop productdetail</td>
-                    <td>2000x2000</td>
-                    <td><span class="status-pill success">Goedgekeurd</span></td>
-                  </tr>
-                  <tr>
-                    <td>Packshot set</td>
-                    <td>Marketplace export</td>
-                    <td>4 beelden</td>
-                    <td><span class="status-pill">Compleet</span></td>
-                  </tr>
-                  <tr>
-                    <td>How-to video</td>
-                    <td>Webshop PDP</td>
-                    <td>MP4</td>
-                    <td><span class="status-pill warning">Ondertiteling mist</span></td>
-                  </tr>
-                </tbody>
+                <tbody id="media-table"></tbody>
               </table>
-            </article>
-          </section>
-        </section>
-
-        <section class="view" id="completeness-view">
-          <section class="detail-header">
-            <div>
-              <p class="eyebrow">Procesmatrix</p>
-              <h2>Datacompleetheid per afdeling</h2>
             </div>
           </section>
-          <section class="two-column">
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Vrijgavecontrole</h3>
-                <span class="panel-label">Demo</span>
+
+          <section class="tab-view" id="tab-procurement">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Leveranciers</h3>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Leverancier</th>
+                      <th>Rol</th>
+                      <th>MOQ</th>
+                      <th>Valuta</th>
+                      <th>Prijs</th>
+                      <th>Levertijd</th>
+                    </tr>
+                  </thead>
+                  <tbody id="supplier-table"></tbody>
+                </table>
               </div>
-              <ul class="check-list">
-                <li><span>Inkoopdata en MOQ</span><strong class="ok">Gereed</strong></li>
-                <li><span>Leveranciersspecificatie</span><strong class="ok">Gereed</strong></li>
-                <li><span>QA/QC documentcontrole</span><strong class="pending">Open</strong></li>
-                <li><span>Webshopomschrijving en media</span><strong class="ok">Gereed</strong></li>
-                <li><span>PPWR materiaalgewichten</span><strong class="pending">Open</strong></li>
-                <li><span>Klant-specifieke datasheet</span><strong class="risk">Verloopt</strong></li>
-              </ul>
-            </article>
-            <article class="panel">
-              <div class="panel-header">
-                <h3>Afdelingen</h3>
-                <span class="panel-label">Rolgericht</span>
+
+              <div class="group-box">
+                <h3>Inkoopstamdata</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Inkoopcontext</label>
+                    <input id="procurement-context" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Goedgekeurde leverancier</label>
+                    <input id="procurement-approved" type="text" readonly />
+                  </div>
+                  <div class="field-row wide">
+                    <label>Benodigde inkoopdocumenten</label>
+                    <textarea id="procurement-required" rows="4" readonly></textarea>
+                  </div>
+                </div>
               </div>
-              <div class="department-grid">
-                <div><span>Inkoop</span><strong>100%</strong></div>
-                <div><span>QA/QC</span><strong>76%</strong></div>
-                <div><span>R&D</span><strong>92%</strong></div>
-                <div><span>Productie</span><strong>81%</strong></div>
-                <div><span>Sales</span><strong>88%</strong></div>
-                <div><span>Webshop</span><strong>95%</strong></div>
-                <div><span>Compliance</span><strong>69%</strong></div>
-                <div><span>Directie</span><strong>Overzicht</strong></div>
+            </div>
+          </section>
+
+          <section class="tab-view" id="tab-sales">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Klant-specifieke documenten</h3>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Klant</th>
+                      <th>Document</th>
+                      <th>Versie</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="customer-specs-table"></tbody>
+                </table>
               </div>
-            </article>
+
+              <div class="group-box">
+                <h3>Verkoop / marketing</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Kanaal</label>
+                    <input id="sales-channel" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Publicatiestatus</label>
+                    <input id="sales-publication" type="text" readonly />
+                  </div>
+                  <div class="field-row wide">
+                    <label>Benodigde verkoopdocumenten</label>
+                    <textarea id="sales-required" rows="4" readonly></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tab-view" id="tab-compliance">
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Compliance</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>MSDS / SDS</label>
+                    <input id="compliance-sds" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>TDS</label>
+                    <input id="compliance-tds" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>COA</label>
+                    <input id="compliance-coa" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>UN / CAS</label>
+                    <input id="compliance-cas" type="text" readonly />
+                  </div>
+                </div>
+              </div>
+
+              <div class="group-box">
+                <h3>PPWR / verpakking</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Kunststof</label>
+                    <input id="extra-plastic" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Metaal</label>
+                    <input id="extra-metal" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Karton</label>
+                    <input id="extra-cardboard" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Verpakkingstype</label>
+                    <input id="extra-packaging" type="text" readonly />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group-box full-width">
+              <h3>Open punten</h3>
+              <ul id="compliance-flags" class="signal-list"></ul>
+            </div>
           </section>
         </section>
       </main>
