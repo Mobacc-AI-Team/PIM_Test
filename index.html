@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PIM Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Saira:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-admin-theme="110">
@@ -11,6 +17,7 @@
       <header class="app-header">
         <div class="brand-area">
           <div class="brand-chip" id="brand-chip">110</div>
+          <img id="brand-logo" class="brand-logo" src="./assets/brand-logos/Logo's/Mobacc_sRGB_VRIJSTAAND_2000x493.png" alt="Merklogo" />
           <div class="brand-copy">
             <h1>PIM Console</h1>
             <p id="brand-subtitle">Mobacc productinformatie en documentbeheer</p>
@@ -23,7 +30,7 @@
             <select id="admin-select">
               <option value="110">110 - Mobacc</option>
               <option value="210">210 - Pharmaspray</option>
-              <option value="710">710 - MediccSports</option>
+              <option value="710">710 - U-Sport</option>
               <option value="731">731 - Sportbase</option>
             </select>
           </div>
@@ -280,6 +287,35 @@
                 </div>
               </div>
             </div>
+
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Productie-uitgangspunten</h3>
+                <ul id="procurement-assumptions" class="bullet-list panel-list"></ul>
+              </div>
+
+              <div class="group-box">
+                <h3>Productiedata</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Receptuur / where used</label>
+                    <input id="production-recipe" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Kwaliteitsniveau</label>
+                    <input id="production-quality" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Batch / traceerbaarheid</label>
+                    <input id="production-batch" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Verplichte fabriekdocs</label>
+                    <input id="production-docset" type="text" readonly />
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="tab-view" id="tab-sales">
@@ -313,6 +349,35 @@
                   <div class="field-row wide">
                     <label>Benodigde verkoopdocumenten</label>
                     <textarea id="sales-required" rows="4" readonly></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-columns">
+              <div class="group-box">
+                <h3>Webshop-uitgangspunten</h3>
+                <ul id="sales-assumptions" class="bullet-list panel-list"></ul>
+              </div>
+
+              <div class="group-box">
+                <h3>Webshopdata</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Magento attribuutset</label>
+                    <input id="sales-attribute-set" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Contentstatus</label>
+                    <input id="sales-content-status" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Media-eis</label>
+                    <input id="sales-media-rule" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Publicatiedoel</label>
+                    <input id="sales-goal" type="text" readonly />
                   </div>
                 </div>
               </div>

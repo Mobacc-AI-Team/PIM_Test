@@ -3,21 +3,25 @@ const administrations = {
     name: "Mobacc",
     subtitle: "Mobacc productinformatie en documentbeheer",
     channelTabs: ["overview", "documents", "procurement", "compliance"],
+    logo: "./assets/brand-logos/Logo's/Mobacc_sRGB_VRIJSTAAND_2000x493.png",
   },
   "210": {
     name: "Pharmaspray",
     subtitle: "Pharmaspray compliance- en productdata",
     channelTabs: ["overview", "documents", "procurement", "compliance"],
+    logo: "./assets/brand-logos/Logo's/Logo_pharmaspray_2026_sRGB_zonder_PO.png",
   },
   "710": {
-    name: "MediccSports",
-    subtitle: "MediccSports webshop- en productspecificaties",
+    name: "U-Sport",
+    subtitle: "U-Sport webshop- en productspecificaties",
     channelTabs: ["overview", "documents", "content", "sales", "compliance"],
+    logo: "./assets/brand-logos/Logo's/U-Sport_logo_horizontaal_zonder_URL_3000px.png",
   },
   "731": {
     name: "Sportbase",
     subtitle: "Sportbase webshop- en marketingcontent",
     channelTabs: ["overview", "documents", "content", "sales", "compliance"],
+    logo: "./assets/brand-logos/Logo's/Logo_Sportbase_WARM_GRIJS_sRGB_VRIJSTAAND.png",
   },
 };
 
@@ -69,6 +73,17 @@ const articles = [
       context: "Goedgekeurde inkoopcomponent",
       approved: "Ja",
       required: "Inkoopspecificatie\nLeveranciersspecificatie\nLeveranciersvoorwaarden\nPPWR-basisdata",
+      assumptions: [
+        "Brondata uit Exact blijft leidend voor code en basisomschrijving.",
+        "PIM bewaart aanvullende leveranciersdocumenten en kwaliteitsbijlagen.",
+        "Productie gebruikt deze kaart voor documentcontrole en verpakkingsdata."
+      ],
+      production: {
+        recipe: "Where used via Exact Globe",
+        quality: "Standaard componentcontrole",
+        batch: "Niet batch-plichtig",
+        docset: "Spec + voorwaarden + PPWR"
+      },
       suppliers: [["ADL - Aerosoldosen Limburg GmbH", "Primair", "5.000", "EUR", "0,034", "21 dgn"]],
     },
     compliance: {
@@ -126,6 +141,17 @@ const articles = [
       context: "Chemische grondstof met complianceplicht",
       approved: "Ja",
       required: "MSDS/SDS\nTDS\nCOA\nLeveranciersspecificatie\nEventueel CAS/UN-data",
+      assumptions: [
+        "Fabrieksgebruik vraagt geldige SDS en productspecificatie vóór vrijgave.",
+        "QA/QC bewaakt versies, verloopdata en volledigheid van chemische documentatie.",
+        "Latere koppeling met MOC en where-used is voorzien."
+      ],
+      production: {
+        recipe: "Koppeling aan recepturen via Exact where used",
+        quality: "QA/QC chemische vrijgave",
+        batch: "Batch- en lottraceerbaarheid vereist",
+        docset: "SDS + TDS + COA"
+      },
       suppliers: [
         ["ADL - Aerosoldosen Limburg GmbH", "Primair", "25", "EUR", "18,400", "14 dgn"],
         ["Altachem NV", "Alternatief", "25", "EUR", "19,100", "21 dgn"],
@@ -158,7 +184,7 @@ const articles = [
     pim: {
       itemType: "Gereed product",
       group: "Medical care",
-      brand: "MediccSports",
+      brand: "U-Sport",
       attributeSet: "Webshop",
       unit: "STUK",
       owner: "Webshop",
@@ -198,6 +224,17 @@ const articles = [
       channel: "Magento / B2B webshop",
       publication: "Nog niet gepubliceerd",
       required: "Korte omschrijving\nLange omschrijving\nSEO titel\nPackshot(s)\nProductspecificatie\nKlantdatasheet",
+      assumptions: [
+        "Webshopcontent wordt niet in Exact maar in PIM onderhouden.",
+        "Minimaal 1 packshot, SEO titel en productspecificatie zijn verplicht.",
+        "Klant-specifieke docs mogen los staan van generieke webshopcontent."
+      ],
+      webshop: {
+        attributeSet: "Medical care",
+        contentStatus: "Concept",
+        mediaRule: "1 packshot + 1 sfeerbeeld + 1 PDF",
+        goal: "B2B publicatie met downloads"
+      },
       customerSpecs: [
         ["Zorginkoper A", "Klantdatasheet", "v1.0", "Actueel"],
         ["Reseller B", "Verkoopspecificatie", "v2.1", "Actueel"],
@@ -271,6 +308,17 @@ const articles = [
       channel: "Magento / Sportbase webshop",
       publication: "Concept",
       required: "Packshots\nLange omschrijving\nSEO velden\nDownloads\nKlant-specifieke datasheets",
+      assumptions: [
+        "Sportbase gebruikt PIM als bron voor marketingteksten en downloads.",
+        "Packshots, lifestylebeelden en klantdatasheets kunnen apart versiebeheer krijgen.",
+        "Publicatie volgt pas na content-, media- en documentcontrole."
+      ],
+      webshop: {
+        attributeSet: "Webshop sportzorg",
+        contentStatus: "Niet compleet",
+        mediaRule: "2 packshots + 1 lifestyle + 1 PDF",
+        goal: "Magento publicatie + marketinggebruik"
+      },
       customerSpecs: [
         ["Mediccsports", "Verkoopspecificatie", "v3.1", "Actueel"],
         ["Sportbase", "Klantdatasheet", "v1.0", "Concept"],
@@ -295,6 +343,7 @@ const articles = [
 
 const adminSelect = document.getElementById("admin-select");
 const brandChip = document.getElementById("brand-chip");
+const brandLogo = document.getElementById("brand-logo");
 const brandSubtitle = document.getElementById("brand-subtitle");
 const contextPill = document.getElementById("context-pill");
 const tabBar = document.getElementById("tab-bar");
@@ -316,6 +365,8 @@ function setTheme(adminCode) {
   const admin = administrations[adminCode];
   document.body.dataset.adminTheme = adminCode;
   brandChip.textContent = adminCode;
+  brandLogo.src = admin.logo;
+  brandLogo.alt = `${admin.name} logo`;
   brandSubtitle.textContent = admin.subtitle;
   resultScope.textContent = `${adminCode} - ${admin.name}`;
 }
@@ -456,11 +507,21 @@ function renderRecord(article) {
     document.getElementById("procurement-context").value = article.procurement.context;
     document.getElementById("procurement-approved").value = article.procurement.approved;
     document.getElementById("procurement-required").value = article.procurement.required;
+    fillList("procurement-assumptions", article.procurement.assumptions);
+    document.getElementById("production-recipe").value = article.procurement.production.recipe;
+    document.getElementById("production-quality").value = article.procurement.production.quality;
+    document.getElementById("production-batch").value = article.procurement.production.batch;
+    document.getElementById("production-docset").value = article.procurement.production.docset;
   } else {
     fillTable("supplier-table", [], "Geen leveranciers gekoppeld.", 6);
     document.getElementById("procurement-context").value = "";
     document.getElementById("procurement-approved").value = "";
     document.getElementById("procurement-required").value = "";
+    fillList("procurement-assumptions", []);
+    document.getElementById("production-recipe").value = "";
+    document.getElementById("production-quality").value = "";
+    document.getElementById("production-batch").value = "";
+    document.getElementById("production-docset").value = "";
   }
 
   if (article.sales) {
@@ -468,11 +529,21 @@ function renderRecord(article) {
     document.getElementById("sales-channel").value = article.sales.channel;
     document.getElementById("sales-publication").value = article.sales.publication;
     document.getElementById("sales-required").value = article.sales.required;
+    fillList("sales-assumptions", article.sales.assumptions);
+    document.getElementById("sales-attribute-set").value = article.sales.webshop.attributeSet;
+    document.getElementById("sales-content-status").value = article.sales.webshop.contentStatus;
+    document.getElementById("sales-media-rule").value = article.sales.webshop.mediaRule;
+    document.getElementById("sales-goal").value = article.sales.webshop.goal;
   } else {
     fillTable("customer-specs-table", [], "Geen klant-specifieke documenten.", 4);
     document.getElementById("sales-channel").value = "";
     document.getElementById("sales-publication").value = "";
     document.getElementById("sales-required").value = "";
+    fillList("sales-assumptions", []);
+    document.getElementById("sales-attribute-set").value = "";
+    document.getElementById("sales-content-status").value = "";
+    document.getElementById("sales-media-rule").value = "";
+    document.getElementById("sales-goal").value = "";
   }
 
   document.getElementById("compliance-sds").value = article.compliance.sds;

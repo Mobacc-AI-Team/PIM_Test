@@ -1,6 +1,6 @@
 :root {
-  --accent: #c81f3d;
-  --accent-soft: #f7dfe5;
+  --accent: #ef3340;
+  --accent-soft: #ffe2e4;
   --line: #d9dde2;
   --line-dark: #acb3bc;
   --text: #1f242b;
@@ -8,32 +8,47 @@
   --surface: #ffffff;
   --surface-soft: #f4f6f8;
   --surface-panel: #fbfcfd;
-  --chip: #b11b36;
+  --chip: #ff1721;
+  --dark-brand: #63757d;
   --shadow: 0 14px 30px rgba(33, 37, 42, 0.07);
+  --font-head: "Rajdhani", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 }
 
 body[data-admin-theme="110"] {
-  --accent: #c81f3d;
-  --accent-soft: #f7dfe5;
-  --chip: #b11b36;
+  --accent: #ef3340;
+  --accent-soft: #ffe2e4;
+  --chip: #ef3340;
+  --dark-brand: #53565a;
+  --font-head: "Rajdhani", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 }
 
 body[data-admin-theme="210"] {
-  --accent: #2f9de0;
-  --accent-soft: #ddf0fb;
-  --chip: #1f83c3;
+  --accent: #00a9e0;
+  --accent-soft: #e4fbff;
+  --chip: #00a9e0;
+  --dark-brand: #003d4c;
+  --font-head: "Rajdhani", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 }
 
 body[data-admin-theme="710"] {
-  --accent: #8dce8f;
-  --accent-soft: #e9f7e7;
-  --chip: #6ab66c;
+  --accent: #3e5d58;
+  --accent-soft: #e8efed;
+  --chip: #3e5d58;
+  --dark-brand: #2c5748;
+  --font-head: "Saira", sans-serif;
+  --font-body: "Saira", sans-serif;
 }
 
 body[data-admin-theme="731"] {
-  --accent: #aeb5bc;
-  --accent-soft: #eef1f3;
-  --chip: #8f98a0;
+  --accent: #f7941d;
+  --accent-soft: #fff0dd;
+  --chip: #f7941d;
+  --dark-brand: #8c857b;
+  --font-head: "Saira", sans-serif;
+  --font-body: "Saira", sans-serif;
 }
 
 *,
@@ -48,7 +63,7 @@ body {
     radial-gradient(circle at top right, var(--accent-soft), transparent 22%),
     linear-gradient(180deg, #f5f6f8 0%, #eef1f4 100%);
   color: var(--text);
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
 }
 
@@ -80,6 +95,13 @@ select {
   gap: 14px;
 }
 
+.brand-logo {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+}
+
 .brand-chip {
   display: grid;
   place-items: center;
@@ -96,12 +118,16 @@ select {
   margin: 0 0 2px;
   font-size: 20px;
   font-weight: 700;
+  font-family: var(--font-head);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .brand-copy p {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
+  letter-spacing: 0.03em;
 }
 
 .header-controls {
@@ -142,6 +168,7 @@ select {
 .context-pill {
   padding: 10px 12px;
   background: linear-gradient(180deg, #fff, var(--accent-soft));
+  border-color: color-mix(in srgb, var(--accent) 20%, white);
 }
 
 .icon-button {
@@ -191,6 +218,9 @@ select {
 .list-heading h3 {
   margin: 0 0 4px;
   font-size: 16px;
+  font-family: var(--font-head);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .sync-card p {
@@ -204,7 +234,7 @@ select {
   padding: 8px 10px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--dark-brand);
   font-size: 12px;
   white-space: nowrap;
 }
@@ -273,6 +303,7 @@ select {
   display: block;
   margin-bottom: 4px;
   font-weight: 700;
+  color: var(--dark-brand);
 }
 
 .result-description,
@@ -342,6 +373,10 @@ select {
   background: linear-gradient(180deg, #fff, var(--accent-soft));
 }
 
+.overview-card strong {
+  color: var(--dark-brand);
+}
+
 .overview-label {
   display: block;
   margin-bottom: 6px;
@@ -370,7 +405,8 @@ select {
 
 .tab-button.active {
   border-bottom-color: var(--accent);
-  color: var(--accent);
+  color: var(--dark-brand);
+  font-weight: 700;
 }
 
 .tab-view {
@@ -403,6 +439,9 @@ select {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   font-size: 16px;
   font-weight: 600;
+  font-family: var(--font-head);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .group-header h3 {
@@ -497,6 +536,10 @@ select {
   background: var(--surface-soft);
 }
 
+.upload-card strong {
+  color: var(--dark-brand);
+}
+
 .upload-card span {
   display: block;
   margin-top: 3px;
@@ -517,8 +560,10 @@ select {
 .preview-kicker {
   display: inline-block;
   margin-bottom: 6px;
-  color: var(--accent);
+  color: var(--dark-brand);
   font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .preview-panel p {
@@ -534,6 +579,10 @@ select {
 .bullet-list li {
   margin-bottom: 8px;
   line-height: 1.5;
+}
+
+.panel-list {
+  padding: 14px 18px 16px 32px;
 }
 
 .full-width {
