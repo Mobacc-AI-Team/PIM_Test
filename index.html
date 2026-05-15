@@ -6,23 +6,84 @@
     <title>PIM Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Saira:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rajdhani:wght@600;700&family=Saira:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-admin-theme="110">
     <div class="app-shell">
+      <section class="start-screen" id="start-screen">
+        <div class="start-shell">
+          <div class="start-copy">
+            <span class="start-kicker">PIM</span>
+            <h1>Product Information Control</h1>
+            <div class="start-mastermark" aria-hidden="true">
+              <span class="appmark-layer layer-back"></span>
+              <span class="appmark-layer layer-mid"></span>
+              <span class="appmark-layer layer-front">PIC</span>
+            </div>
+          </div>
 
-      <!-- HEADER -->
+          <div class="start-grid" id="start-grid">
+            <button class="start-card active" type="button" data-admin-card="110">
+              <span class="start-code">110</span>
+              <div class="start-logo-wrap">
+                <img class="start-logo" src="./assets/brand-logos/Logo's/Mobacc_sRGB_VRIJSTAAND_2000x493.png" alt="Mobacc logo" />
+              </div>
+              <strong>Mobacc</strong>
+            </button>
+            <button class="start-card" type="button" data-admin-card="210">
+              <span class="start-code">210</span>
+              <div class="start-logo-wrap">
+                <img class="start-logo" src="./assets/brand-logos/Logo's/Logo_pharmaspray_2026_sRGB_zonder_PO.png" alt="Pharmaspray logo" />
+              </div>
+              <strong>Pharmaspray</strong>
+            </button>
+            <button class="start-card" type="button" data-admin-card="710">
+              <span class="start-code">710</span>
+              <div class="start-logo-wrap">
+                <img class="start-logo" src="./assets/brand-logos/Logo's/U-Sport_logo_horizontaal_zonder_URL_3000px.png" alt="U-Sport logo" />
+              </div>
+              <strong>U-Sport</strong>
+            </button>
+            <button class="start-card" type="button" data-admin-card="731">
+              <span class="start-code">731</span>
+              <div class="start-logo-wrap">
+                <img class="start-logo" src="./assets/brand-logos/Logo's/Logo_Sportbase_WARM_GRIJS_sRGB_VRIJSTAAND.png" alt="Sportbase logo" />
+              </div>
+              <strong>Sportbase</strong>
+            </button>
+          </div>
+
+          <div class="start-actions">
+            <div class="start-selected" id="start-selected">Geselecteerd: 110 - Mobacc</div>
+            <button id="enter-app" class="enter-button" type="button">Open PIM omgeving</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="app-frame" id="app-frame" hidden>
       <header class="app-header">
         <div class="brand-area">
           <div class="brand-chip" id="brand-chip">110</div>
           <img id="brand-logo" class="brand-logo" src="./assets/brand-logos/Logo's/Mobacc_sRGB_VRIJSTAAND_2000x493.png" alt="Merklogo" />
           <div class="brand-copy">
-            <h1>PIM Console</h1>
+            <h1 class="brand-app-title">
+              <span class="brand-app-logo" aria-hidden="true">
+                <span class="appmark-layer layer-back"></span>
+                <span class="appmark-layer layer-mid"></span>
+                <span class="appmark-layer layer-front">PIC</span>
+              </span>
+              <span>PIC</span>
+            </h1>
             <p id="brand-subtitle">Mobacc productinformatie en documentbeheer</p>
           </div>
         </div>
+
         <div class="header-controls">
+          <button id="back-to-start" class="back-button" type="button">Terug naar start</button>
           <div class="header-field">
             <label for="admin-select">Administratie</label>
             <select id="admin-select">
@@ -32,6 +93,7 @@
               <option value="731">731 - Sportbase</option>
             </select>
           </div>
+
           <div class="header-field context-indicator">
             <label>Context</label>
             <div class="context-pill" id="context-pill">Selecteer een artikel</div>
@@ -39,22 +101,25 @@
         </div>
       </header>
 
-      <!-- WORKSPACE -->
       <main class="workspace">
-
-        <!-- LEFT: ZOEKPANEL -->
         <aside class="search-panel">
           <div class="search-card sync-card">
             <div>
               <h2>Exact sync</h2>
               <p id="sync-caption">Kies eerst een administratie. Daarna zoek je binnen de gesynchroniseerde artikeldata.</p>
             </div>
-            <span class="sync-badge" id="sync-badge">● Gesynchroniseerd</span>
+            <span class="sync-badge">Gesynchroniseerd</span>
           </div>
 
           <div class="search-card">
             <label class="search-label" for="article-search">Zoek artikel of omschrijving</label>
-            <input id="article-search" class="search-input" type="search" placeholder="Bijv. LIMONE, spray of 50-33915" />
+            <input
+              id="article-search"
+              class="search-input"
+              type="search"
+              placeholder="Bijv. LIMONE, onderhoudsspray of 50-33915-4602"
+            />
+
             <div class="search-meta">
               <span id="result-count">0 resultaten</span>
               <button id="clear-search" type="button" class="text-button">Reset</button>
@@ -70,25 +135,23 @@
           </div>
         </aside>
 
-        <!-- RIGHT: DETAILPANEL -->
         <section class="detail-panel">
-
-          <!-- HERO -->
           <div class="record-hero">
             <div class="hero-primary">
               <div class="field-row compact">
-                <label>Artikelcode <span class="erp-badge">Exact</span></label>
+                <label>Artikelcode</label>
                 <input id="field-code" type="text" readonly />
               </div>
               <div class="field-row compact wide">
-                <label>Omschrijving <span class="erp-badge">Exact</span></label>
+                <label>Omschrijving</label>
                 <input id="field-description" type="text" readonly />
               </div>
               <div class="field-row compact">
-                <label>Zoekcode <span class="erp-badge">Exact</span></label>
+                <label>Zoekcode</label>
                 <input id="field-searchcode" type="text" readonly />
               </div>
             </div>
+
             <div class="hero-secondary">
               <div class="field-row compact">
                 <label>Administratie</label>
@@ -100,25 +163,15 @@
               </div>
               <div class="field-row compact">
                 <label>Workflowstatus</label>
-                <div id="field-status-wrap"></div>
+                <input id="field-status" type="text" readonly />
               </div>
               <div class="field-row compact">
                 <label>Laatste update</label>
                 <input id="field-updated" type="text" readonly />
               </div>
             </div>
-            <div class="hero-completeness">
-              <div class="completeness-row">
-                <span class="completeness-label-txt">PIM volledigheid</span>
-                <span id="completeness-pct">–</span>
-              </div>
-              <div class="completeness-track">
-                <div class="completeness-fill" id="completeness-fill"></div>
-              </div>
-            </div>
           </div>
 
-          <!-- OVERZICHTSKAARTEN -->
           <div class="record-overview">
             <div class="overview-card">
               <span class="overview-label">Type</span>
@@ -138,329 +191,314 @@
             </div>
           </div>
 
-          <!-- WORKFLOWBALK -->
-          <div class="workflow-bar" id="workflow-bar">
-            <div class="wf-left">
-              <span class="wf-section-label">Workflow</span>
-              <div id="wf-status-display"></div>
-            </div>
-            <div class="wf-right">
-              <button class="wf-btn secondary" onclick="workflowAction('review')">Ter review sturen</button>
-              <button class="wf-btn primary" onclick="workflowAction('complete')">Markeer als compleet</button>
-            </div>
-          </div>
-
-          <!-- TABS -->
           <nav class="tab-bar" id="tab-bar" aria-label="PIM tabs"></nav>
 
-          <!-- TAB: PIM BASIS -->
           <section class="tab-view active" id="tab-overview">
             <div class="form-columns">
-              <div class="group-box" id="group-pim-basis">
-                <div class="group-header">
-                  <h3>PIM basis</h3>
-                  <div class="group-header-actions" id="actions-pim-basis">
-                    <button class="edit-btn" onclick="enterEditMode('pim-basis')">Bewerken</button>
+              <div class="group-box">
+                <h3>PIM basis</h3>
+                <div class="form-grid">
+                  <div class="field-row">
+                    <label>Artikeltype</label>
+                    <input id="basis-item-type" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Artikelgroep</label>
+                    <input id="basis-group" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Merk</label>
+                    <input id="basis-brand" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Attribuutset</label>
+                    <input id="basis-attribute-set" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Eenheid</label>
+                    <input id="basis-unit" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Data-eigenaar</label>
+                    <input id="basis-owner" type="text" readonly />
                   </div>
                 </div>
-                <div class="form-grid">
-                  <div class="field-row"><label>Artikeltype</label><input id="basis-item-type" type="text" readonly /></div>
-                  <div class="field-row"><label>Artikelgroep</label><input id="basis-group" type="text" readonly /></div>
-                  <div class="field-row"><label>Merk</label><input id="basis-brand" type="text" readonly /></div>
-                  <div class="field-row"><label>Attribuutset</label><input id="basis-attribute-set" type="text" readonly /></div>
-                  <div class="field-row"><label>Eenheid</label><input id="basis-unit" type="text" readonly /></div>
-                  <div class="field-row"><label>Data-eigenaar</label><input id="basis-owner" type="text" readonly /></div>
-                </div>
               </div>
-              <div class="group-box" id="group-statussignalen">
-                <div class="group-header">
-                  <h3>Statussignalen</h3>
-                </div>
+
+              <div class="group-box">
+                <h3>Statussignalen</h3>
                 <ul id="basis-flags" class="signal-list"></ul>
               </div>
             </div>
           </section>
 
-          <!-- TAB: DOCUMENTEN -->
           <section class="tab-view" id="tab-documents">
             <div class="form-columns">
-              <div class="group-box" id="group-documentregister">
-                <div class="group-header">
-                  <h3>Documentregister</h3>
-                  <div class="group-header-actions">
-                    <button class="add-btn" onclick="openModal('document')">+ Toevoegen</button>
-                  </div>
-                </div>
+              <div class="group-box">
+                <h3>Documentregister</h3>
                 <table class="data-table">
                   <thead>
-                    <tr><th>Type</th><th>Context</th><th>Versie</th><th>Status</th><th>Geldig t/m</th></tr>
+                    <tr>
+                      <th>Type</th>
+                      <th>Context</th>
+                      <th>Versie</th>
+                      <th>Status</th>
+                      <th>Geldig t/m</th>
+                    </tr>
                   </thead>
                   <tbody id="documents-table"></tbody>
                 </table>
               </div>
-              <div class="group-box" id="group-upload">
-                <div class="group-header">
-                  <h3>Upload &amp; preview</h3>
-                  <div class="group-header-actions">
-                    <button class="add-btn" onclick="openModal('upload')">↑ Upload</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>Upload & preview</h3>
                 <div class="upload-stack" id="upload-list"></div>
               </div>
             </div>
           </section>
 
-          <!-- TAB: CONTENT & PREVIEW -->
           <section class="tab-view" id="tab-content">
             <div class="form-columns">
-              <div class="group-box" id="group-content-teksten">
-                <div class="group-header">
-                  <h3>Magento / webshopteksten</h3>
-                  <div class="group-header-actions" id="actions-content-teksten">
-                    <button class="edit-btn" onclick="enterEditMode('content-teksten')">Bewerken</button>
+              <div class="group-box">
+                <h3>Magento / webshopteksten</h3>
+                <div class="form-grid">
+                  <div class="field-row wide">
+                    <label>Korte omschrijving</label>
+                    <textarea id="content-short" rows="3" readonly></textarea>
+                  </div>
+                  <div class="field-row wide">
+                    <label>Lange omschrijving</label>
+                    <textarea id="content-long" rows="6" readonly></textarea>
+                  </div>
+                  <div class="field-row">
+                    <label>SEO titel</label>
+                    <input id="content-seo-title" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>SEO status</label>
+                    <input id="content-seo-status" type="text" readonly />
                   </div>
                 </div>
-                <div class="form-grid">
-                  <div class="field-row wide"><label>Korte omschrijving</label><textarea id="content-short" rows="3" readonly></textarea></div>
-                  <div class="field-row wide"><label>Lange omschrijving</label><textarea id="content-long" rows="6" readonly></textarea></div>
-                  <div class="field-row"><label>SEO titel</label><input id="content-seo-title" type="text" readonly /></div>
-                  <div class="field-row"><label>SEO status</label><input id="content-seo-status" type="text" readonly /></div>
-                </div>
               </div>
-              <div class="group-box" id="group-preview">
-                <div class="group-header">
-                  <h3>Webshop preview</h3>
+
+              <div class="group-box">
+                <h3>Preview</h3>
+                <div class="preview-panel">
+                  <div class="preview-header">
+                    <span class="preview-kicker">Webshop preview</span>
+                    <strong id="preview-title"></strong>
+                  </div>
+                  <p id="preview-copy"></p>
+                  <ul id="usp-list" class="bullet-list"></ul>
                 </div>
-                <div id="preview-render"></div>
               </div>
             </div>
-            <div class="group-box full-width" id="group-media">
-              <div class="group-header">
-                <h3>Media &amp; downloads</h3>
-                <div class="group-header-actions">
-                  <button class="add-btn" onclick="openModal('media')">+ Media</button>
-                </div>
-              </div>
+
+            <div class="group-box full-width">
+              <h3>Media & downloads</h3>
               <table class="data-table">
-                <thead><tr><th>Asset</th><th>Gebruik</th><th>Status</th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Gebruik</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
                 <tbody id="media-table"></tbody>
               </table>
             </div>
           </section>
 
-          <!-- TAB: INKOOP -->
           <section class="tab-view" id="tab-procurement">
             <div class="form-columns">
-              <div class="group-box" id="group-leveranciers">
-                <div class="group-header">
-                  <h3>Leveranciers</h3>
-                  <div class="group-header-actions">
-                    <button class="add-btn" onclick="openModal('supplier')">+ Leverancier</button>
-                  </div>
-                </div>
+              <div class="group-box">
+                <h3>Leveranciers</h3>
                 <table class="data-table">
-                  <thead><tr><th>Leverancier</th><th>Rol</th><th>MOQ</th><th>Valuta</th><th>Prijs</th><th>Levertijd</th></tr></thead>
+                  <thead>
+                    <tr>
+                      <th>Leverancier</th>
+                      <th>Rol</th>
+                      <th>MOQ</th>
+                      <th>Valuta</th>
+                      <th>Prijs</th>
+                      <th>Levertijd</th>
+                    </tr>
+                  </thead>
                   <tbody id="supplier-table"></tbody>
                 </table>
               </div>
-              <div class="group-box" id="group-inkoop-stamdata">
-                <div class="group-header">
-                  <h3>Inkoopstamdata</h3>
-                  <div class="group-header-actions" id="actions-inkoop-stamdata">
-                    <button class="edit-btn" onclick="enterEditMode('inkoop-stamdata')">Bewerken</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>Inkoopstamdata</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>Inkoopcontext</label><input id="procurement-context" type="text" readonly /></div>
-                  <div class="field-row"><label>Goedgekeurde leverancier</label><input id="procurement-approved" type="text" readonly /></div>
-                  <div class="field-row wide"><label>Benodigde inkoopdocumenten</label><textarea id="procurement-required" rows="4" readonly></textarea></div>
+                  <div class="field-row">
+                    <label>Inkoopcontext</label>
+                    <input id="procurement-context" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Goedgekeurde leverancier</label>
+                    <input id="procurement-approved" type="text" readonly />
+                  </div>
+                  <div class="field-row wide">
+                    <label>Benodigde inkoopdocumenten</label>
+                    <textarea id="procurement-required" rows="4" readonly></textarea>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div class="form-columns">
-              <div class="group-box" id="group-productie-uitgangspunten">
-                <div class="group-header">
-                  <h3>Productie-uitgangspunten</h3>
-                </div>
+              <div class="group-box">
+                <h3>Productie-uitgangspunten</h3>
                 <ul id="procurement-assumptions" class="bullet-list panel-list"></ul>
               </div>
-              <div class="group-box" id="group-productiedata">
-                <div class="group-header">
-                  <h3>Productiedata</h3>
-                  <div class="group-header-actions" id="actions-productiedata">
-                    <button class="edit-btn" onclick="enterEditMode('productiedata')">Bewerken</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>Productiedata</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>Receptuur / where used</label><input id="production-recipe" type="text" readonly /></div>
-                  <div class="field-row"><label>Kwaliteitsniveau</label><input id="production-quality" type="text" readonly /></div>
-                  <div class="field-row"><label>Batch / traceerbaarheid</label><input id="production-batch" type="text" readonly /></div>
-                  <div class="field-row"><label>Verplichte fabriekdocs</label><input id="production-docset" type="text" readonly /></div>
+                  <div class="field-row">
+                    <label>Receptuur / where used</label>
+                    <input id="production-recipe" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Kwaliteitsniveau</label>
+                    <input id="production-quality" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Batch / traceerbaarheid</label>
+                    <input id="production-batch" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Verplichte fabriekdocs</label>
+                    <input id="production-docset" type="text" readonly />
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- TAB: VERKOOP / WEBSHOP -->
           <section class="tab-view" id="tab-sales">
             <div class="form-columns">
-              <div class="group-box" id="group-klant-specs">
-                <div class="group-header">
-                  <h3>Klant-specifieke documenten</h3>
-                  <div class="group-header-actions">
-                    <button class="add-btn" onclick="openModal('customer')">+ Toevoegen</button>
-                  </div>
-                </div>
+              <div class="group-box">
+                <h3>Klant-specifieke documenten</h3>
                 <table class="data-table">
-                  <thead><tr><th>Klant</th><th>Document</th><th>Versie</th><th>Status</th></tr></thead>
+                  <thead>
+                    <tr>
+                      <th>Klant</th>
+                      <th>Document</th>
+                      <th>Versie</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
                   <tbody id="customer-specs-table"></tbody>
                 </table>
               </div>
-              <div class="group-box" id="group-verkoop-data">
-                <div class="group-header">
-                  <h3>Verkoop / marketing</h3>
-                  <div class="group-header-actions" id="actions-verkoop-data">
-                    <button class="edit-btn" onclick="enterEditMode('verkoop-data')">Bewerken</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>Verkoop / marketing</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>Kanaal</label><input id="sales-channel" type="text" readonly /></div>
-                  <div class="field-row"><label>Publicatiestatus</label><input id="sales-publication" type="text" readonly /></div>
-                  <div class="field-row wide"><label>Benodigde verkoopdocumenten</label><textarea id="sales-required" rows="4" readonly></textarea></div>
+                  <div class="field-row">
+                    <label>Kanaal</label>
+                    <input id="sales-channel" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Publicatiestatus</label>
+                    <input id="sales-publication" type="text" readonly />
+                  </div>
+                  <div class="field-row wide">
+                    <label>Benodigde verkoopdocumenten</label>
+                    <textarea id="sales-required" rows="4" readonly></textarea>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div class="form-columns">
-              <div class="group-box" id="group-webshop-uitgangspunten">
-                <div class="group-header">
-                  <h3>Webshop-uitgangspunten</h3>
-                </div>
+              <div class="group-box">
+                <h3>Webshop-uitgangspunten</h3>
                 <ul id="sales-assumptions" class="bullet-list panel-list"></ul>
               </div>
-              <div class="group-box" id="group-webshopdata">
-                <div class="group-header">
-                  <h3>Webshopdata</h3>
-                  <div class="group-header-actions" id="actions-webshopdata">
-                    <button class="edit-btn" onclick="enterEditMode('webshopdata')">Bewerken</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>Webshopdata</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>Magento attribuutset</label><input id="sales-attribute-set" type="text" readonly /></div>
-                  <div class="field-row"><label>Contentstatus</label><input id="sales-content-status" type="text" readonly /></div>
-                  <div class="field-row"><label>Media-eis</label><input id="sales-media-rule" type="text" readonly /></div>
-                  <div class="field-row"><label>Publicatiedoel</label><input id="sales-goal" type="text" readonly /></div>
+                  <div class="field-row">
+                    <label>Magento attribuutset</label>
+                    <input id="sales-attribute-set" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Contentstatus</label>
+                    <input id="sales-content-status" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Media-eis</label>
+                    <input id="sales-media-rule" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Publicatiedoel</label>
+                    <input id="sales-goal" type="text" readonly />
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- TAB: COMPLIANCE -->
           <section class="tab-view" id="tab-compliance">
             <div class="form-columns">
-              <div class="group-box" id="group-compliance-data">
-                <div class="group-header">
-                  <h3>Compliance</h3>
-                  <div class="group-header-actions" id="actions-compliance-data">
-                    <button class="edit-btn" onclick="enterEditMode('compliance-data')">Bewerken</button>
-                  </div>
-                </div>
+              <div class="group-box">
+                <h3>Compliance</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>MSDS / SDS</label><input id="compliance-sds" type="text" readonly /></div>
-                  <div class="field-row"><label>TDS</label><input id="compliance-tds" type="text" readonly /></div>
-                  <div class="field-row"><label>COA</label><input id="compliance-coa" type="text" readonly /></div>
-                  <div class="field-row"><label>UN / CAS</label><input id="compliance-cas" type="text" readonly /></div>
+                  <div class="field-row">
+                    <label>MSDS / SDS</label>
+                    <input id="compliance-sds" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>TDS</label>
+                    <input id="compliance-tds" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>COA</label>
+                    <input id="compliance-coa" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>UN / CAS</label>
+                    <input id="compliance-cas" type="text" readonly />
+                  </div>
                 </div>
               </div>
-              <div class="group-box" id="group-ppwr-data">
-                <div class="group-header">
-                  <h3>PPWR / verpakking</h3>
-                  <div class="group-header-actions" id="actions-ppwr-data">
-                    <button class="edit-btn" onclick="enterEditMode('ppwr-data')">Bewerken</button>
-                  </div>
-                </div>
+
+              <div class="group-box">
+                <h3>PPWR / verpakking</h3>
                 <div class="form-grid">
-                  <div class="field-row"><label>Kunststof</label><input id="extra-plastic" type="text" readonly /></div>
-                  <div class="field-row"><label>Metaal</label><input id="extra-metal" type="text" readonly /></div>
-                  <div class="field-row"><label>Karton</label><input id="extra-cardboard" type="text" readonly /></div>
-                  <div class="field-row"><label>Verpakkingstype</label><input id="extra-packaging" type="text" readonly /></div>
+                  <div class="field-row">
+                    <label>Kunststof</label>
+                    <input id="extra-plastic" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Metaal</label>
+                    <input id="extra-metal" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Karton</label>
+                    <input id="extra-cardboard" type="text" readonly />
+                  </div>
+                  <div class="field-row">
+                    <label>Verpakkingstype</label>
+                    <input id="extra-packaging" type="text" readonly />
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="group-box full-width" id="group-open-punten">
-              <div class="group-header">
-                <h3>Open punten</h3>
-              </div>
+
+            <div class="group-box full-width">
+              <h3>Open punten</h3>
               <ul id="compliance-flags" class="signal-list"></ul>
             </div>
           </section>
-
         </section>
       </main>
-    </div>
-
-    <!-- MODAL: DOCUMENT / UPLOAD / TOEVOEGEN -->
-    <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true">
-      <div class="modal-card">
-        <div class="modal-head">
-          <span id="modal-title">Document toevoegen</span>
-          <button class="modal-close-btn" onclick="closeModal()">✕</button>
-        </div>
-        <div class="modal-body" id="modal-body">
-          <div class="drop-zone" id="drop-zone">
-            <div class="drop-zone-inner" id="drop-zone-inner">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="17 8 12 3 7 8"/>
-                <line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-              <p>Sleep een bestand hierheen</p>
-              <span class="drop-or">of</span>
-              <button class="choose-file-btn" onclick="simulateUpload()">Bestand kiezen</button>
-            </div>
-            <div class="drop-zone-success hidden" id="drop-zone-success">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#177245" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              <span id="drop-zone-filename">document.pdf</span>
-            </div>
-          </div>
-          <div class="form-grid modal-fields">
-            <div class="field-row">
-              <label>Documenttype</label>
-              <select id="modal-type">
-                <option>MSDS / SDS</option>
-                <option>TDS</option>
-                <option>COA</option>
-                <option>Verkoopspecificatie</option>
-                <option>Inkoopspecificatie</option>
-                <option>Klantdatasheet</option>
-                <option>Leveranciersspecificatie</option>
-                <option>Overig</option>
-              </select>
-            </div>
-            <div class="field-row">
-              <label>Context</label>
-              <input id="modal-context" type="text" placeholder="Bijv. Compliance, Verkoop" />
-            </div>
-            <div class="field-row">
-              <label>Versie</label>
-              <input id="modal-version" type="text" placeholder="v1.0" />
-            </div>
-            <div class="field-row">
-              <label>Geldig t/m</label>
-              <input id="modal-valid" type="date" />
-            </div>
-          </div>
-        </div>
-        <div class="modal-foot">
-          <button class="btn-ghost" onclick="closeModal()">Annuleren</button>
-          <button class="btn-accent" onclick="saveModal()">Opslaan</button>
-        </div>
       </div>
     </div>
-
-    <!-- TOAST AREA -->
-    <div class="toast-area" id="toast-area"></div>
 
     <script src="./app.js"></script>
   </body>
