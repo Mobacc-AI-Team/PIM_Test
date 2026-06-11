@@ -1,8 +1,8 @@
 /* ── Variabelen ──────────────────────────────────────────────────────────── */
 
 :root {
-  --accent:       #B91C1C;
-  --accent-tint:  #FEF2F2;
+  --accent:       #ef3340;
+  --accent-tint:  #ffe2e4;
   --bg:           #F4F4F5;
   --surface:      #FFFFFF;
   --border:       #E4E4E7;
@@ -16,10 +16,10 @@
   --radius-xl:    14px;
 }
 
-body[data-admin-theme="110"] { --accent: #B91C1C; --accent-tint: #FEF2F2; }
-body[data-admin-theme="210"] { --accent: #0369A1; --accent-tint: #EFF6FF; }
-body[data-admin-theme="710"] { --accent: #166534; --accent-tint: #F0FDF4; }
-body[data-admin-theme="731"] { --accent: #C2410C; --accent-tint: #FFF7ED; }
+body[data-admin-theme="110"] { --accent: #ef3340; --accent-tint: #ffe2e4; } /* Mobacc rood */
+body[data-admin-theme="210"] { --accent: #00a9e0; --accent-tint: #e4fbff; } /* Pharmaspray blauw */
+body[data-admin-theme="710"] { --accent: #3e5d58; --accent-tint: #e8efed; } /* U-Sport groen */
+body[data-admin-theme="731"] { --accent: #f7941d; --accent-tint: #fff0dd; } /* Sportbase oranje */
 
 /* ── Reset ───────────────────────────────────────────────────────────────── */
 
