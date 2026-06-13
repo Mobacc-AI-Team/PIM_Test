@@ -343,8 +343,6 @@ const articles = [
 
 const adminSelect = document.getElementById("admin-select");
 const brandChip = document.getElementById("brand-chip");
-const brandLogo = document.getElementById("brand-logo");
-const brandSubtitle = document.getElementById("brand-subtitle");
 const contextPill = document.getElementById("context-pill");
 const startScreen = document.getElementById("start-screen");
 const appFrame = document.getElementById("app-frame");
@@ -380,9 +378,8 @@ function setTheme(adminCode) {
   const admin = administrations[adminCode];
   document.body.dataset.adminTheme = adminCode;
   brandChip.textContent = adminCode;
-  brandLogo.src = admin.logo;
-  brandLogo.alt = `${admin.name} logo`;
-  brandSubtitle.textContent = admin.subtitle;
+  const sidebarName = document.getElementById("sidebar-brand-name");
+  if (sidebarName) sidebarName.textContent = admin.name;
   resultScope.textContent = `${adminCode} - ${admin.name}`;
 }
 
@@ -646,6 +643,7 @@ enterAppButton.addEventListener("click", () => {
   appFrame.hidden = false;
   activeCode = null;
   searchInput.value = "";
+  setView("articles");
   renderResults("");
 });
 
@@ -662,6 +660,39 @@ searchInput.addEventListener("input", () => {
 clearButton.addEventListener("click", () => {
   searchInput.value = "";
   renderResults("");
+});
+
+/* ── Sidebar navigatie ─────────────────────────────────────────────────── */
+
+const navMeta = {
+  dashboard: { title: "Dashboard", sub: "Overzicht en kerncijfers" },
+  articles:  { title: "Artikelen", sub: "Productinformatie en documentbeheer" },
+  history:   { title: "Geschiedenis", sub: "Eerdere wijzigingen en versies" },
+  settings:  { title: "Instellingen", sub: "Beheer en configuratie" },
+};
+
+const workspaceEl   = document.querySelector(".workspace");
+const placeholderEl  = document.getElementById("view-placeholder");
+const viewTitleEl    = document.getElementById("view-title");
+const viewSubtitleEl = document.getElementById("view-subtitle");
+const placeholderTitleEl = document.getElementById("placeholder-title");
+
+function setView(navKey) {
+  const meta = navMeta[navKey] || navMeta.articles;
+  document.querySelectorAll(".nav-item[data-nav]").forEach((item) => {
+    item.classList.toggle("active", item.dataset.nav === navKey);
+  });
+  viewTitleEl.textContent    = meta.title;
+  viewSubtitleEl.textContent = meta.sub;
+
+  const isArticles = navKey === "articles";
+  workspaceEl.classList.toggle("hidden", !isArticles);
+  placeholderEl.classList.toggle("hidden", isArticles);
+  if (!isArticles) placeholderTitleEl.textContent = meta.title;
+}
+
+document.querySelectorAll(".nav-item[data-nav]").forEach((item) => {
+  item.addEventListener("click", () => setView(item.dataset.nav));
 });
 
 setTheme(activeAdmin);

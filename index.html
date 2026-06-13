@@ -62,41 +62,75 @@
       </section>
 
       <div class="app-frame" id="app-frame" hidden>
-      <header class="app-header">
-        <div class="brand-area">
-          <div class="brand-chip" id="brand-chip">110</div>
-          <img id="brand-logo" class="brand-logo" src="./assets/brand-logos/Logo's/Mobacc_sRGB_VRIJSTAAND_2000x493.png" alt="Merklogo" />
-          <div class="brand-copy">
-            <h1 class="brand-app-title">
-              <span class="brand-app-logo" aria-hidden="true">
-                <span class="appmark-layer layer-back"></span>
-                <span class="appmark-layer layer-mid"></span>
-                <span class="appmark-layer layer-front">PIC</span>
-              </span>
-              <span>PIC</span>
-            </h1>
-            <p id="brand-subtitle">Mobacc productinformatie en documentbeheer</p>
-          </div>
-        </div>
+      <div class="app-layout">
 
-        <div class="header-controls">
-          <button id="back-to-start" class="back-button" type="button">Terug naar start</button>
-          <div class="header-field">
-            <label for="admin-select">Administratie</label>
-            <select id="admin-select">
-              <option value="110">110 - Mobacc</option>
-              <option value="210">210 - Pharmaspray</option>
-              <option value="710">710 - U-Sport</option>
-              <option value="731">731 - Sportbase</option>
-            </select>
+        <!-- ── SIDEBAR ─────────────────────────────────────────────── -->
+        <aside class="app-sidebar">
+          <div class="sidebar-brand">
+            <span class="brand-chip" id="brand-chip">110</span>
+            <div class="sidebar-brand-name" id="sidebar-brand-name">Mobacc</div>
+            <div class="sidebar-brand-sub" id="brand-subtitle">PRODUCT INFORMATION CONTROL</div>
           </div>
 
-          <div class="header-field context-indicator">
-            <label>Context</label>
-            <div class="context-pill" id="context-pill">Selecteer een artikel</div>
+          <nav class="sidebar-nav" aria-label="Hoofdnavigatie">
+            <button class="nav-item" type="button" data-nav="dashboard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+              <span>Dashboard</span>
+            </button>
+            <button class="nav-item active" type="button" data-nav="articles">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v4H4z"/><path d="M4 12h10"/><path d="M4 16h10"/><path d="M4 20h7"/><circle cx="18" cy="16" r="3"/></svg>
+              <span>Artikelen</span>
+            </button>
+            <button class="nav-item" type="button" data-nav="history">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/></svg>
+              <span>Geschiedenis</span>
+            </button>
+            <button class="nav-item" type="button" data-nav="settings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 0 1-4 0v-.1A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 2.6 14H2.5a2 2 0 0 1 0-4h.1A1.7 1.7 0 0 0 4.6 7l-.1-.1A2 2 0 1 1 7.3 4.1l.1.1a1.7 1.7 0 0 0 1.9.3H9.4A1.7 1.7 0 0 0 10.5 3V2.9a2 2 0 0 1 4 0V3a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9.4a1.7 1.7 0 0 0 1.6 1.1h.1a2 2 0 0 1 0 4H21a1.7 1.7 0 0 0-1.6 1z"/></svg>
+              <span>Instellingen</span>
+            </button>
+          </nav>
+
+          <div class="sidebar-foot">
+            <button class="nav-item" id="back-to-start" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6 6 18"/><path d="m9 6-3 0 0 3"/><path d="M4 12a8 8 0 1 0 8-8"/></svg>
+              <span>Terug naar start</span>
+            </button>
+            <div class="sidebar-version">PIM CONSOLE V2.0<br />INTERN GEBRUIK</div>
           </div>
-        </div>
-      </header>
+        </aside>
+
+        <!-- ── MAIN ────────────────────────────────────────────────── -->
+        <div class="app-main">
+          <header class="app-header">
+            <div class="header-title">
+              <h1 id="view-title">Artikelen</h1>
+              <p id="view-subtitle" data-default="Productinformatie en documentbeheer">Productinformatie en documentbeheer</p>
+            </div>
+
+            <div class="header-controls">
+              <div class="header-field">
+                <label for="admin-select">Administratie</label>
+                <select id="admin-select">
+                  <option value="110">110 - Mobacc</option>
+                  <option value="210">210 - Pharmaspray</option>
+                  <option value="710">710 - U-Sport</option>
+                  <option value="731">731 - Sportbase</option>
+                </select>
+              </div>
+
+              <div class="header-field context-indicator">
+                <label>Context</label>
+                <div class="context-pill" id="context-pill">Selecteer een artikel</div>
+              </div>
+            </div>
+          </header>
+
+          <div class="view-placeholder hidden" id="view-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v5"/></svg>
+            <h2 id="placeholder-title">Module</h2>
+            <p>Deze module is in dit demo-prototype nog niet ingericht.</p>
+          </div>
 
       <main class="workspace">
         <aside class="search-panel">
@@ -494,7 +528,9 @@
           </section>
         </section>
       </main>
-      </div>
+        </div><!-- /.app-main -->
+      </div><!-- /.app-layout -->
+      </div><!-- /.app-frame -->
     </div>
 
     <script src="./app.js"></script>
